@@ -8,23 +8,23 @@ class TestZipcodeToRateAreaMapper < Minitest::Test
     @mapper = ZipcodeToRateAreaMapper.new(setup_zips_data)
   end
 
-  def test_map_zipcodes_to_rate_areas_handles_all_zips
+  def test_map_handles_all_zips
     zipcode_to_area_map = @mapper.map
     assert_equal(%w[12345 12346 12347 12348], zipcode_to_area_map.keys.sort)
   end
 
-  def test_map_zipcodes_to_rate_areas_handles_one_to_one_mappings
+  def test_map_handles_one_to_one_mappings
     zipcode_to_area_map = @mapper.map
     assert_equal('AA 1', zipcode_to_area_map['12345'])
     assert_equal('AA 2', zipcode_to_area_map['12346'])
   end
 
-  def test_map_zipcodes_to_rate_areas_handles_multiple_counties
+  def test_map_handles_multiple_counties
     zipcode_to_area_map = @mapper.map
     assert_equal('BB 3', zipcode_to_area_map['12347'])
   end
 
-  def test_map_zipcodes_to_rate_areas_handles_ambiguous_rate_areas
+  def test_map_handles_ambiguous_rate_areas
     zipcode_to_area_map = @mapper.map
     assert_equal('ambiguous', zipcode_to_area_map['12348'])
   end
