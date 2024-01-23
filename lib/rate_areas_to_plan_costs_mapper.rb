@@ -2,7 +2,7 @@
 
 require 'plan_costs'
 
-# From a CSV table of plan data, produce a map of rate areas to plan costs
+# From a CSV table of plan data, produce a map of rate areas (string) to plan costs (float)
 class RateAreasToPlanCostsMapper
   attr_accessor :plans_data
 
